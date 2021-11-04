@@ -4,6 +4,8 @@ Repository for the Flux App functional tests.
 
 ## Structure
 
+At the moment of writing this document, the repository follow the below structure.
+
 ```
 bases
 └── BASE_RESOURCES
