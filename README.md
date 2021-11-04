@@ -63,3 +63,49 @@ Name of the specific resource uniquely identifying and differentiating it from o
 ### The `WC_NAME` directory
 
 Name of the specific WC. This is for grouping resources targeting a WC, even though the manifests are deployed on the MC. This name does not necessarily need to reflect the actual WC name, but should uniquely identify it and differentiate from other WCs.
+
+## Sample Flux Configuration
+
+The sample configuration presented here assumes the existence of the following asset:
+
+* `test-mc` management cluster (MC),
+* `test` organization and corresponding `org-test` namespace on the MC,
+* `test-wc` workload cluster (WC),
+* `github-credentials` available on the MC inside the `org-test` namespace.
+
+The resources in the next sections configures the WCs with the apps listed in their respective directories.
+
+### The `GitRepository` CR
+
+```
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: flux-app-tests
+  namespace: org-test
+spec:
+  interval: 1m
+  url: https://github.com/giantswarm/flux-app-tests
+  secretRef:
+    name: github-credentials
+  ref:
+    branch: feature/init-with-data
+```
+
+### The `Kustomization` CR
+
+```
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: test-apps
+  namespace: org-test
+spec:
+  prune: true
+  interval: 1m
+  path: "./management-clusters/test-mc/overlays/apps"
+  sourceRef:
+    kind: GitRepository
+    name: flux-app-tests
+  timeout: 2m
+```
