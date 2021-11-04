@@ -6,4 +6,4 @@ spec:
   catalog: giantswarm
   kubeConfig:
     inCluster: false
-  name: hello-world
+  name: hello-world-app
