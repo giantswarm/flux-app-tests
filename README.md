@@ -23,9 +23,38 @@ tests
             └── ...
 ```
 
+### The `bases` directory
+
+Groups Kustomize's bases for various resources. These resources constitute the fundamental building blocks for the test cases.
+
+### The `BASE_RESOURCES` directory
+
+Groups Kustomize's bases for a single resource type. Provides additional granularity for bases management. At the time of writing this document, only the below types are considered.
+
+* `apps`
+
+### The `BASE_RESOURCE_NAME` directory
+
+Name of the specific resource uniquely identifying and differentiating it from other resource of the same type. This directory contains the `kustomization.yaml` and other Kustomize-supported files denoted by the `...`.
+
+### The `tests` directory
+
+Groups test cases. Applying the output of `run` executes the tests, that is, it configures the Flux to use this repository as a source and apply everything that's located in the `tests/test_cases/**/input` directory.
+
+### The `TEST_CASE_NAME` directory
+
+Single test case. The name should briefly describe it.
+
+### The `input` directory
+
+Collects the input expected to be reconciled by Flux. It stands the actual test case.
+
+### The `result` directory
+
+Gathers results the test should produce. It is here for comparison purposes.
 
 
-## Structure Proposal 2 (focused on MC-to-WC relation)
+## Structure Proposal 2 (focused MC-to-WC relation)
 
 At the moment of writing this document, the repository follows the below structure.
 

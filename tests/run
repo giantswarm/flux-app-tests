@@ -1,4 +1,6 @@
----
+#!/usr/bin/env bash
+
+cat <<EOF
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
@@ -14,17 +16,38 @@ spec:
   ignore: |
     tests/test_cases/**/result
 ---
+EOF
+
+generate_kustomization() {
+    cat <<EOF
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
-  name: test-cases
+  name: test-$1
   namespace: default
 spec:
   serviceAccountName: automation
   prune: true
   interval: 1m
-  path: "./tests/test_cases"
+  path: "./tests/test_cases/$1"
   sourceRef:
     kind: GitRepository
     name: flux-app-tests
   timeout: 2m
+---
+EOF
+}
+
+generate_all_tests() {
+    for dir in $(dirname $0)/test_cases/*/
+    do
+      generate_kustomization $(basename $dir)
+    done
+}
+
+if [ -z "$1" ]
+then
+    generate_all_tests
+else
+    generate_kustomization $1
+fi
