@@ -1,0 +1,11 @@
+apiVersion: application.giantswarm.io/v1alpha1
+kind: App
+metadata:
+  name: hello-world
+spec:
+  catalog: giantswarm
+  kubeConfig:
+    inCluster: false
+  name: hello-world-app
+  version: 0.1.0
+  namespace: hello-world

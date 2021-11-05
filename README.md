@@ -2,7 +2,30 @@
 
 Repository for the Flux App functional tests.
 
-## Structure
+## Structure Proposal 1 (focused on tests)
+
+The below structure groups test cases, with input and expected results.
+
+```
+bases
+└── BASE_RESOURCES
+    └── BASE_RESOURCE_NAME
+        ├── kustomization.yaml
+        └── ...
+tests
+├── run.yaml
+└── test_cases
+    └── TEST_CASE_NAME
+        ├── input
+        |   ├── kustomization.yaml
+        |   └── ...
+        └── result
+            └── ...
+```
+
+
+
+## Structure Proposal 2 (focused on MC-to-WC relation)
 
 At the moment of writing this document, the repository follows the below structure.
 
