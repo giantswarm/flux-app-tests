@@ -1,5 +1,25 @@
 #!/usr/bin/env bash
 
+help() {
+  echo -e "
+Usage:
+  start | validate [test_name]
+
+Examples:
+  # Runn all tests
+  run start
+
+  # Run specific test
+  run start simple-app-cr-delivery
+
+  # Validate test
+  run validate simple-app-cr-delivery
+"
+
+  exit 1
+}
+
+generate_gitrepository() {
 cat <<EOF
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
@@ -17,6 +37,7 @@ spec:
     tests/test_cases/**/result
 ---
 EOF
+}
 
 generate_kustomization() {
     cat <<EOF
@@ -45,9 +66,23 @@ generate_all_tests() {
     done
 }
 
-if [ -z "$1" ]
-then
-    generate_all_tests
-else
-    generate_kustomization $1
-fi
+start() {
+    generate_gitrepository
+    if [ -z "$1" ]
+    then
+        generate_all_tests
+    else
+        generate_kustomization $1
+    fi
+}
+
+case "$1" in
+    "start")
+        start $2
+        ;;
+    "validate")
+        validate $2
+        ;;
+    *)
+        help
+esac

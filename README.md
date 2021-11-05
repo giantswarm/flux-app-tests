@@ -67,6 +67,12 @@ In order to execute only a specific test, run:
 ./tests/run TEST_CASE_NAME | kubectl apply -f -
 ```
 
+In order to simply validate the result, run:
+
+```
+kubectl diff -f tests/test_cases/TEST_CASE_NAME/result/RESOURCE.yaml --field-manager=kubectl-server-side-apply
+```
+
 In order to delete the tests, run:
 
 ```
