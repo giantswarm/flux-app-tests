@@ -41,6 +41,8 @@ Name of the specific resource uniquely identifying and differentiating it from o
 
 Groups test cases. Applying the output of `run` executes the tests, that is, it configures the Flux to use this repository as a source and apply everything that's located in the `tests/test_cases/**/input` directory.
 
+In order to apply all the tests run `./tests/run | kubectl create -f -`. Afterwards, delete them with the corresponding command `./tests/run | kubectl delete -f -`.
+
 ### The `TEST_CASE_NAME` directory
 
 Single test case. The name should briefly describe it.
