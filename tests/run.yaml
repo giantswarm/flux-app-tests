@@ -1,12 +1,14 @@
+---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
   name: flux-app-tests
+  namespace: default
 spec:
   interval: 1m
   url: https://github.com/giantswarm/flux-app-tests
   secretRef:
-    name: github-credentials
+    name: tests-github-credentials
   ref:
     branch: feature/init-with-data
   ignore: |
@@ -16,7 +18,9 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
   name: test-cases
+  namespace: default
 spec:
+  serviceAccountName: automation
   prune: true
   interval: 1m
   path: "./tests/test_cases"
