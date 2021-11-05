@@ -13,7 +13,7 @@ bases
         ├── kustomization.yaml
         └── ...
 tests
-├── run.yaml
+├── run
 └── test_cases
     └── TEST_CASE_NAME
         ├── input
