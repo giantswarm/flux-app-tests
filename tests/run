@@ -29,8 +29,6 @@ metadata:
 spec:
   interval: 1m
   url: https://github.com/giantswarm/flux-app-tests
-  secretRef:
-    name: tests-github-credentials
   ref:
     branch: feature/init-with-data
   ignore: |

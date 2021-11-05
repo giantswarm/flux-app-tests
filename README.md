@@ -58,19 +58,25 @@ Gathers results the test should produce. It is here for comparison purposes.
 In order to execute all the tests at once run:
 
 ```
-./tests/run | kubectl apply -f -
+./tests/run start | kubectl apply -f -
 ```
 
 In order to execute only a specific test, run:
 
 ```
-./tests/run TEST_CASE_NAME | kubectl apply -f -
+./tests/run start TEST_CASE_NAME | kubectl apply -f -
 ```
 
-In order to simply validate the result, run:
+In order to simply validate all the results, run:
 
 ```
-kubectl diff -f tests/test_cases/TEST_CASE_NAME/result/RESOURCE.yaml --field-manager=kubectl-server-side-apply
+./tests/run validate
+```
+
+In order to validate single result, run:
+
+```
+./tests/run validate TEST_CASE_NAME
 ```
 
 In order to delete the tests, run:
