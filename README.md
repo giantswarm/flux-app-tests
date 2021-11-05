@@ -84,3 +84,20 @@ In order to delete the tests, run:
 ```
 ./tests/run | kubectl delete -f -
 ```
+
+### Examples
+
+Run the `simple-app-cr-delivery` test:
+
+```
+$ ./tests/run start | kubectl apply -f -
+gitrepository.source.toolkit.fluxcd.io/flux-app-tests created
+kustomization.kustomize.toolkit.fluxcd.io/test-simple-app-cr-delivery created
+```
+
+Wait a moment for the resources to get reconciled. And then validate the result with:
+
+```
+$ ./tests/run validate simple-app-cr-delivery
+[simple-app-cr-delivery]...OK
+```
