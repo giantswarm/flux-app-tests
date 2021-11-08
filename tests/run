@@ -90,7 +90,7 @@ start() {
 }
 
 validate_test() {
-    ERROR=$(kubectl diff -f $(dirname $0)/test_cases/$1/result/appcr.yaml 2>&1 >/dev/null)
+    ERROR=$(kubectl diff -f $(dirname $0)/test_cases/$1/result/resources.yaml 2>&1 >/dev/null)
     if [ $? -eq 0 ]
     then
         echo [$1]...OK
