@@ -19,8 +19,22 @@ Examples:
   exit 1
 }
 
+generate_helmrepository() {
+    cat <<EOF
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: giantswarm
+  namespace: default
+spec:
+  url: https://giantswarm.github.io/giantswarm-catalog
+  interval: 1m
+---
+EOF
+}
+
 generate_gitrepository() {
-cat <<EOF
+    cat <<EOF
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
@@ -66,6 +80,7 @@ generate_all_tests() {
 
 start() {
     generate_gitrepository
+    generate_helmrepository
     if [ -z "$1" ]
     then
         generate_all_tests
