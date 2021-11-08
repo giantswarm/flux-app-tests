@@ -32,6 +32,11 @@ spec:
     kind: HelmRepository
     name: giantswarm
   version: 0.1.0
+status:
+  artifact:
+    checksum: 1d0e8fd08374466004f2691a1f5a6f23bba97917
+    path: helmchart/default/default-hello-world/hello-world-app-0.1.0.tgz
+    revision: 0.1.0
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -51,3 +56,8 @@ spec:
       containers:
       - image: quay.io/giantswarm/helloworld:latest
         name: helloworld
+status:
+  availableReplicas: 1
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
