@@ -7,8 +7,4 @@ spec:
   chart:
     spec:
       chart: hello-world-app
-      sourceRef:
-        kind: HelmRepository
-        name: giantswarm
-        namespace: default
       interval: 1m
