@@ -6,6 +6,7 @@ metadata:
     app-operator.giantswarm.io/version: 0.0.0
 spec:
   catalog: giantswarm
+  catalogNamespace: default
   kubeConfig:
     inCluster: false
   name: hello-world-app
