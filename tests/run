@@ -44,7 +44,7 @@ spec:
   interval: 1m
   url: https://github.com/giantswarm/flux-app-tests
   ref:
-    branch: feature/init-with-data
+    branch: main
   ignore: |
     tests/test_cases/**/result
 ---
