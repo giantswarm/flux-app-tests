@@ -10,3 +10,4 @@ spec:
   kubeConfig:
     inCluster: true
   name: hello-world-app
+
