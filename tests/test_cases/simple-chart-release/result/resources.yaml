@@ -1,0 +1,63 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  annotations:
+    kustomize.toolkit.fluxcd.io/checksum: eda09ec7411f266957b9e40772eed5faf091e698
+  labels:
+    kustomize.toolkit.fluxcd.io/name: test-simple-chart-release
+    kustomize.toolkit.fluxcd.io/namespace: default
+  name: hello-world
+  namespace: default
+spec:
+  chart:
+    spec:
+      chart: hello-world-app
+      interval: 1m
+      sourceRef:
+        kind: HelmRepository
+        name: giantswarm
+        namespace: default
+      version: 0.1.0
+  interval: 1m
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmChart
+metadata:
+  name: default-hello-world
+  namespace: default
+spec:
+  chart: hello-world-app
+  interval: 1m0s
+  sourceRef:
+    kind: HelmRepository
+    name: giantswarm
+  version: 0.1.0
+status:
+  artifact:
+    checksum: 1d0e8fd08374466004f2691a1f5a6f23bba97917
+    path: helmchart/default/default-hello-world/hello-world-app-0.1.0.tgz
+    revision: 0.1.0
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - image: quay.io/giantswarm/helloworld:latest
+        name: helloworld
+status:
+  availableReplicas: 1
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
