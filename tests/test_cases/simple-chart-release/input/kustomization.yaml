@@ -3,5 +3,6 @@ kind: Kustomization
 namespace: default
 bases:
 - ../../../../bases/releases/hello-world
+- ../../../../bases/sources/giantswarm
 patches:
 - overlay.yaml

@@ -3,6 +3,7 @@ kind: HelmRelease
 metadata:
   name: hello-world
 spec:
+  serviceAccountName: default
   chart:
     spec:
       version: 0.1.0
@@ -10,3 +11,10 @@ spec:
         kind: HelmRepository
         name: giantswarm
         namespace: default
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: giantswarm
+spec:
+  url: https://giantswarm.github.io/giantswarm-catalog
