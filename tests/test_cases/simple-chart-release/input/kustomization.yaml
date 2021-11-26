@@ -3,5 +3,11 @@ kind: Kustomization
 namespace: default
 bases:
 - ../../../../bases/releases/hello-world
+- ../../../../bases/sources/giantswarm
 patches:
 - overlay.yaml
+patchesJson6902:
+- target:
+    kind: HelmRepository
+    name: giantswarm
+  path: name.yaml
