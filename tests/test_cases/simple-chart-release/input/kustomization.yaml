@@ -3,6 +3,7 @@ kind: Kustomization
 bases:
 - ../../../../bases/releases/hello-world
 - ../../../../bases/sources/giantswarm
+namespace: flux-system
 patchesStrategicMerge:
 - overlay.yaml
 patchesJson6902:
