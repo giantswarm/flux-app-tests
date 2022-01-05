@@ -2,6 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: hello-world
+  namespace: flux-system
 spec:
   serviceAccountName: kustomize-controller
   targetNamespace: default
@@ -18,5 +19,6 @@ apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
   name: giantswarm
+  namespace: default
 spec:
   url: https://giantswarm.github.io/giantswarm-catalog
