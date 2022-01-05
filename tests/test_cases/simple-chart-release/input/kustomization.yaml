@@ -5,7 +5,7 @@ bases:
 - ../../../../bases/releases/hello-world
 - ../../../../bases/sources/giantswarm
 patches:
-- path: overlay.yaml
+- overlay.yaml
 patchesJson6902:
 - target:
     kind: HelmRepository
