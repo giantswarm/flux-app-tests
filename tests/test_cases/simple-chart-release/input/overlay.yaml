@@ -3,7 +3,7 @@ kind: HelmRelease
 metadata:
   name: hello-world
 spec:
-  serviceAccountName: default
+  serviceAccountName: kustomize-controller
   targetNamespace: hello-world
   chart:
     spec:
