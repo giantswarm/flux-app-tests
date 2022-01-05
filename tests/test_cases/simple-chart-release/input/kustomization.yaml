@@ -9,4 +9,5 @@ patchesJson6902:
 - target:
     kind: HelmRepository
     name: giantswarm
+    namespace: default
   path: name.yaml
