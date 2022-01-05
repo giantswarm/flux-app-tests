@@ -7,6 +7,7 @@ spec:
   chart:
     spec:
       version: 0.1.0
+      targetNamespace: hello-world
       sourceRef:
         kind: HelmRepository
         name: simple-chart-release-repo
