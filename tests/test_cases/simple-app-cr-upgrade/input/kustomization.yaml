@@ -5,3 +5,8 @@ bases:
 - ../../../../bases/apps/hello-world
 patches:
 - overlay.yaml
+patchesJson6902:
+- target:
+    kind: App
+    name: hello-world
+  path: name.yaml
