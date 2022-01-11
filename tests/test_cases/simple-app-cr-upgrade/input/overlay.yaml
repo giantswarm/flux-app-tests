@@ -1,0 +1,8 @@
+apiVersion: application.giantswarm.io/v1alpha1
+kind: App
+metadata:
+  name: hello-world
+spec:
+  version: 0.1.0
+  namespace: hello-world
+  catalog: giantswarm-flux-app-upgrade-test
