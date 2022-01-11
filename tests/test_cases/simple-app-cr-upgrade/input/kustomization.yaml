@@ -4,7 +4,7 @@ namespace: default
 bases:
 - ../../../../bases/apps/hello-world
 patches:
-- patch: overlay.yaml
+- path: overlay.yaml
 patchesJson6902:
 - target:
     kind: App
