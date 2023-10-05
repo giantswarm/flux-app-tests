@@ -3,5 +3,5 @@ kind: Kustomization
 namespace: default
 bases:
 - ../../../../bases/apps/hello-world
-patches:
-- overlay.yaml
+patchesStrategicMerge:
+  - overlay.yaml
