@@ -9,5 +9,5 @@ spec:
   catalogNamespace: default
   kubeConfig:
     inCluster: true
-  name: hello-world-app
+  name: hello-world
 

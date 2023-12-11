@@ -3,17 +3,15 @@ kind: App
 metadata:
   name: hello-world
   namespace: default
-  annotations:
-    kustomize.toolkit.fluxcd.io/checksum: 3cc8147461006bed50bd5f994329b4e2d5e2a73b
   labels:
     app-operator.giantswarm.io/version: 5.2.0
-    app.kubernetes.io/name: hello-world-app
+    app.kubernetes.io/name: hello-world
     kustomize.toolkit.fluxcd.io/name: test-simple-app-cr-delivery
     kustomize.toolkit.fluxcd.io/namespace: default
 spec:
   catalog: giantswarm
   kubeConfig:
     inCluster: false
-  name: hello-world-app
-  version: 0.1.0
+  name: hello-world
+  version: 2.3.0
   namespace: hello-world
