@@ -3,6 +3,6 @@ kind: App
 metadata:
   name: hello-world
 spec:
-  version: 0.1.0
+  version: 2.3.0
   namespace: hello-world-flux-app-upgrade-test
   catalog: giantswarm-flux-app-upgrade-test

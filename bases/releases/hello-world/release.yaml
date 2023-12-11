@@ -6,5 +6,5 @@ spec:
   interval: 1m
   chart:
     spec:
-      chart: hello-world-app
+      chart: hello-world
       interval: 1m
