@@ -4,5 +4,5 @@ metadata:
   name: hello-world
 spec:
   version: 2.3.0
-  namespace: hello-world-flux-app-upgrade-test
+  namespace: default
   catalog: giantswarm-flux-app-upgrade-test
